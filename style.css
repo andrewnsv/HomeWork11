@@ -45,6 +45,12 @@ body {
 .container .wrapper .res button {
   width: 200px;
   height: 35px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.container .wrapper .res button:hover {
+  background: rgba(7, 248, 80, 0.5);
+  color: white;
 }
 .container .wrapper ul {
   list-style: none;
@@ -57,8 +63,10 @@ body {
   justify-content: space-between;
   margin: 15px 0;
   width: 100%;
+  border-radius: 15px;
   border: 1px solid #fff;
   padding: 5px;
+  cursor: pointer;
 }
 .container .wrapper ul li:hover {
   background: rgba(0, 0, 0, 0.6);
@@ -71,6 +79,7 @@ body {
   width: 175px;
   height: 175px;
   margin-right: 10px;
+  border-radius: 15px;
 }
 .container .wrapper ul li .wrap-item {
   width: 100%;
@@ -89,4 +98,11 @@ body {
   height: 35px;
   width: 170px;
   transform: rotate(90deg);
+  border-radius: 15px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.container .wrapper ul li .wrap-item button:hover {
+  background: rgba(7, 248, 80, 0.5);
+  color: white;
 }/*# sourceMappingURL=style.css.map */
