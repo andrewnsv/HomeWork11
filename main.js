@@ -1,26 +1,32 @@
 const output = document.getElementById("output");
 const restoreBtn = document.getElementById("restore-btn");
+const renderList = (elements) => {
+  return elements.reduce((acc, current) => {
+    acc += `<li>
+    <img src="${current.image}">
+        <div class="wrap-item">
+            <div class='name-content'>Имя:
+                <p>${current.name}</p>
+            </div>
+            <div class='name-content'>Статус:
+                <p> ${current.status}</p>
+            </div>
+            <div class='name-content'>Айди: 
+                <p>${current.id}</p>
+            </div>
+            <button btn-name="delete">Delete Block</button>
+        </div>
+    </li>`
+
+    return acc;
+  }, '');
+}
 
 fetch("https://rickandmortyapi.com/api/character")
   .then((response) => response.json())
   .then((data) => {
-    data.results.forEach((d) => {
-      output.innerHTML += `<li>
-        <img src="${d.image}">
-            <div class="wrap-item">
-                <div class='name-content'>Имя:
-                    <p>${d.name}</p>
-                </div>
-                <div class='name-content'>Статус:
-                    <p> ${d.status}</p>
-                </div>
-                <div class='name-content'>Айди: 
-                    <p>${d.id}</p>
-                </div>
-                <button btn-name="delete">Delete Block</button>
-            </div>
-        </li>`;
-    });
+
+    output.innerHTML = renderList(data.results);
 
     output.addEventListener("click", (e) => {
       let target = e.target.closest("li");
@@ -53,22 +59,6 @@ fetch("https://rickandmortyapi.com/api/character")
         });
       }
 
-      data.results.forEach((d) => {
-        output.innerHTML += `<li>
-          <img src="${d.image}">
-              <div class="wrap-item">
-                  <div class='name-content'>Имя:
-                      <p>${d.name}</p>
-                  </div>
-                  <div class='name-content'>Статус:
-                      <p> ${d.status}</p>
-                  </div>
-                  <div class='name-content'>Айди: 
-                      <p>${d.id}</p>
-                  </div>
-                  <button btn-name="delete">Delete Block</button>
-              </div>
-          </li>`;
-      });
+      output.innerHTML = renderList(data.results);
     })
   });
