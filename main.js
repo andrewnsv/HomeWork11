@@ -19,18 +19,19 @@ const renderList = (elements) => {
     </li>`
 
     return acc;
-  }, '');
+  },'');
 }
 
 fetch("https://rickandmortyapi.com/api/character")
   .then((response) => response.json())
   .then((data) => {
-
+    
+    
     output.innerHTML = renderList(data.results);
 
     output.addEventListener("click", (e) => {
       let target = e.target.closest("li");
-
+      
       if (target) {
         let allLi = document.querySelectorAll("li");
 
@@ -49,13 +50,14 @@ fetch("https://rickandmortyapi.com/api/character")
       }
     });
 
-
     restoreBtn.addEventListener('click', () => {
       const listItems = document.querySelectorAll("li");
+      const result = document.querySelector(".res span");
 
       if (listItems.length > 0) {
         listItems.forEach(item => {
           item.remove();
+          result.textContent = ''
         });
       }
 
